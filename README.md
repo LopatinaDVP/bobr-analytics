@@ -10,7 +10,7 @@
 
 ## Ролик за 50 секунд
 
-VIDEO_URL
+https://github.com/user-attachments/assets/49e219a6-f52a-4cdd-b378-dd9733e8f127
 
 Полная версия 1080p лежит в разделе [Releases](../../releases/latest).
 
