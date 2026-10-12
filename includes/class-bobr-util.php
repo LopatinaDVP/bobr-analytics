@@ -29,7 +29,7 @@ class Bobr_Util {
 			'YouBot'              => array( 'YouBot', 'ai' ),
 			'MistralAI-User'      => array( 'MistralAI-User', 'ai' ),
 			'TimpiBot'            => array( 'TimpiBot', 'ai' ),
-			'YandexAdditional'    => array( 'YandexAdditional (Алиса)', 'ai' ),
+			'YandexAdditional'    => array( __( 'YandexAdditional (Alice)', 'bobr-analytics' ), 'ai' ),
 			'GigaBot'             => array( 'GigaBot', 'ai' ),
 			'YandexBot'           => array( 'YandexBot', 'search' ),
 			'YandexMobileBot'     => array( 'YandexMobileBot', 'search' ),
@@ -38,7 +38,7 @@ class Bobr_Util {
 			'YandexMetrika'       => array( 'YandexMetrika', 'search' ),
 			'YandexWebmaster'     => array( 'YandexWebmaster', 'search' ),
 			'YandexFavicons'      => array( 'YandexFavicons', 'search' ),
-			'Yandex'              => array( 'Yandex (прочие)', 'search' ),
+			'Yandex'              => array( __( 'Yandex (other)', 'bobr-analytics' ), 'search' ),
 			'Googlebot-Image'     => array( 'Googlebot-Image', 'search' ),
 			'Googlebot'           => array( 'Googlebot', 'search' ),
 			'Google-InspectionTool' => array( 'Google-InspectionTool', 'search' ),
@@ -74,19 +74,19 @@ class Bobr_Util {
 
 	public static function labels() {
 		return array(
-			'search'   => 'Поисковики',
-			'ai'       => 'Нейросети',
-			'seo'      => 'SEO-сервисы',
-			'other'    => 'Прочие',
-			'unknown'  => 'Неизвестные',
-			'social'   => 'Соцсети',
-			'ref'      => 'Сайты',
-			'direct'   => 'Прямые заходы',
-			'internal' => 'Внутренние',
-			'utm'      => 'Рекламные метки',
-			'desktop'  => 'Компьютер',
-			'mobile'   => 'Телефон',
-			'tablet'   => 'Планшет',
+			'search'   => __( 'Search engines', 'bobr-analytics' ),
+			'ai'       => __( 'AI assistants', 'bobr-analytics' ),
+			'seo'      => __( 'SEO tools', 'bobr-analytics' ),
+			'other'    => __( 'Other', 'bobr-analytics' ),
+			'unknown'  => __( 'Unknown', 'bobr-analytics' ),
+			'social'   => __( 'Social networks', 'bobr-analytics' ),
+			'ref'      => __( 'Websites', 'bobr-analytics' ),
+			'direct'   => __( 'Direct', 'bobr-analytics' ),
+			'internal' => __( 'Internal', 'bobr-analytics' ),
+			'utm'      => __( 'UTM campaigns', 'bobr-analytics' ),
+			'desktop'  => __( 'Desktop', 'bobr-analytics' ),
+			'mobile'   => __( 'Mobile', 'bobr-analytics' ),
+			'tablet'   => __( 'Tablet', 'bobr-analytics' ),
 		);
 	}
 
@@ -98,7 +98,7 @@ class Bobr_Util {
 	public static function bot( $ua ) {
 		$ua = (string) $ua;
 		if ( '' === trim( $ua ) ) {
-			return array( 'Пустая строка браузера', 'unknown' );
+			return array( __( 'Empty user agent', 'bobr-analytics' ), 'unknown' );
 		}
 		foreach ( self::bots() as $needle => $info ) {
 			if ( false !== stripos( $ua, $needle ) ) {
@@ -106,7 +106,7 @@ class Bobr_Util {
 			}
 		}
 		if ( preg_match( '~(bot|crawl|spider|slurp|fetch|scan|monitor|curl/|wget/|python-|python/|go-http-client|java/|okhttp|axios/|node-fetch|headless|phantomjs|libwww|httpclient|guzzle|scrapy|httrack)~i', $ua, $m ) ) {
-			$name = 'Неизвестный';
+			$name = __( 'Unknown bot', 'bobr-analytics' );
 			if ( preg_match( '~([A-Za-z][\w\-\.]*(?:bot|crawler|spider)[\w\-]*)~i', $ua, $n ) ) {
 				$name = $n[1];
 			} elseif ( preg_match( '~(curl|wget|python-requests|python-urllib|go-http-client|okhttp|axios|node-fetch|java|HeadlessChrome|Guzzle|Scrapy)~i', $ua, $n ) ) {
@@ -126,7 +126,7 @@ class Bobr_Util {
 			$device = 'mobile';
 		}
 
-		$os = 'Другая';
+		$os = __( 'Other OS', 'bobr-analytics' );
 		$map = array(
 			'~Windows NT 10~'      => 'Windows 10/11',
 			'~Windows NT 6\.[23]~' => 'Windows 8',
@@ -146,9 +146,9 @@ class Bobr_Util {
 			}
 		}
 
-		$browser = 'Другой';
+		$browser = __( 'Other browser', 'bobr-analytics' );
 		$bmap = array(
-			'~YaBrowser|YaSearchBrowser~' => 'Яндекс Браузер',
+			'~YaBrowser|YaSearchBrowser~' => __( 'Yandex Browser', 'bobr-analytics' ),
 			'~Edg/|Edge/~'                => 'Edge',
 			'~OPR/|Opera~'                => 'Opera',
 			'~SamsungBrowser~'            => 'Samsung',
@@ -174,10 +174,12 @@ class Bobr_Util {
 		}
 		foreach ( array( 360, 400, 480, 768, 1024, 1280, 1366, 1440, 1600, 1920, 2560 ) as $b ) {
 			if ( $w <= $b ) {
-				return 'до ' . $b;
+				/* translators: %d: screen width in pixels */
+				return sprintf( __( 'up to %d', 'bobr-analytics' ), $b );
 			}
 		}
-		return 'больше 2560';
+		/* translators: %d: screen width in pixels */
+		return sprintf( __( 'over %d', 'bobr-analytics' ), 2560 );
 	}
 
 	public static function source( $ref_host, $ref_path, $utm ) {
@@ -189,10 +191,10 @@ class Bobr_Util {
 			'chatgpt.com' => 'ChatGPT', 'chat.openai.com' => 'ChatGPT', 'openai.com' => 'ChatGPT',
 			'perplexity.ai' => 'Perplexity', 'chat.deepseek.com' => 'DeepSeek', 'deepseek.com' => 'DeepSeek',
 			'gemini.google.com' => 'Gemini', 'bard.google.com' => 'Gemini', 'copilot.microsoft.com' => 'Copilot',
-			'alice.yandex.ru' => 'Алиса', 'ya.ru/alice' => 'Алиса', 'giga.chat' => 'GigaChat', 'claude.ai' => 'Claude',
+			'alice.yandex.ru' => __( 'Alice', 'bobr-analytics' ), 'ya.ru/alice' => __( 'Alice', 'bobr-analytics' ), 'giga.chat' => 'GigaChat', 'claude.ai' => 'Claude',
 			'you.com' => 'You.com', 'poe.com' => 'Poe', 'phind.com' => 'Phind', 'grok.com' => 'Grok', 'chat.mistral.ai' => 'Mistral',
 		);
-		$ai_utm = array( 'chatgpt' => 'ChatGPT', 'openai' => 'ChatGPT', 'perplexity' => 'Perplexity', 'deepseek' => 'DeepSeek', 'gemini' => 'Gemini', 'copilot' => 'Copilot', 'gigachat' => 'GigaChat', 'giga.chat' => 'GigaChat', 'claude' => 'Claude', 'grok' => 'Grok', 'phind' => 'Phind', 'alice' => 'Алиса' );
+		$ai_utm = array( 'chatgpt' => 'ChatGPT', 'openai' => 'ChatGPT', 'perplexity' => 'Perplexity', 'deepseek' => 'DeepSeek', 'gemini' => 'Gemini', 'copilot' => 'Copilot', 'gigachat' => 'GigaChat', 'giga.chat' => 'GigaChat', 'claude' => 'Claude', 'grok' => 'Grok', 'phind' => 'Phind', 'alice' => __( 'Alice', 'bobr-analytics' ) );
 		foreach ( $ai_utm as $needle => $name ) {
 			if ( '' !== $src && false !== strpos( $src, $needle ) ) {
 				return array( 'ai', $name );
@@ -208,17 +210,17 @@ class Bobr_Util {
 			}
 		}
 		if ( '' !== $src || ! empty( $utm['utm_campaign'] ) ) {
-			return array( 'utm', '' !== $src ? substr( $src, 0, 60 ) : 'без utm_source' );
+			return array( 'utm', '' !== $src ? substr( $src, 0, 60 ) : __( 'no utm_source', 'bobr-analytics' ) );
 		}
 		if ( '' === $h ) {
-			return array( 'direct', 'Прямые заходы' );
+			return array( 'direct', __( 'Direct', 'bobr-analytics' ) );
 		}
 		if ( $h === $own || self::ends( $h, '.' . $own ) ) {
-			return array( 'internal', 'Внутренние переходы' );
+			return array( 'internal', __( 'Internal navigation', 'bobr-analytics' ) );
 		}
 		$search = array(
-			'yandex' => 'Яндекс', 'ya.ru' => 'Яндекс', 'google' => 'Google', 'bing.com' => 'Bing', 'go.mail.ru' => 'Mail.ru',
-			'search.mail.ru' => 'Mail.ru', 'rambler.ru' => 'Рамблер', 'duckduckgo.com' => 'DuckDuckGo', 'yahoo.com' => 'Yahoo',
+			'yandex' => __( 'Yandex', 'bobr-analytics' ), 'ya.ru' => __( 'Yandex', 'bobr-analytics' ), 'google' => 'Google', 'bing.com' => 'Bing', 'go.mail.ru' => 'Mail.ru',
+			'search.mail.ru' => 'Mail.ru', 'rambler.ru' => __( 'Rambler', 'bobr-analytics' ), 'duckduckgo.com' => 'DuckDuckGo', 'yahoo.com' => 'Yahoo',
 			'ecosia.org' => 'Ecosia', 'search.brave.com' => 'Brave',
 		);
 		foreach ( $search as $dom => $name ) {
@@ -230,9 +232,9 @@ class Bobr_Util {
 			}
 		}
 		$social = array(
-			'vk.com' => 'ВКонтакте', 'vk.ru' => 'ВКонтакте', 'away.vk.com' => 'ВКонтакте', 'ok.ru' => 'Одноклассники',
-			't.me' => 'Телеграм', 'telegram.org' => 'Телеграм', 'web.telegram.org' => 'Телеграм', 'dzen.ru' => 'Дзен',
-			'zen.yandex.ru' => 'Дзен', 'youtube.com' => 'Ютуб', 'youtu.be' => 'Ютуб', 'pinterest' => 'Пинтерест',
+			'vk.com' => __( 'VK', 'bobr-analytics' ), 'vk.ru' => __( 'VK', 'bobr-analytics' ), 'away.vk.com' => __( 'VK', 'bobr-analytics' ), 'ok.ru' => __( 'Odnoklassniki', 'bobr-analytics' ),
+			't.me' => __( 'Telegram', 'bobr-analytics' ), 'telegram.org' => __( 'Telegram', 'bobr-analytics' ), 'web.telegram.org' => __( 'Telegram', 'bobr-analytics' ), 'dzen.ru' => __( 'Dzen', 'bobr-analytics' ),
+			'zen.yandex.ru' => __( 'Dzen', 'bobr-analytics' ), 'youtube.com' => __( 'YouTube', 'bobr-analytics' ), 'youtu.be' => __( 'YouTube', 'bobr-analytics' ), 'pinterest' => __( 'Pinterest', 'bobr-analytics' ),
 			'instagram.com' => 'Instagram', 'facebook.com' => 'Facebook', 'tiktok.com' => 'TikTok', 'rutube.ru' => 'Rutube',
 			'twitter.com' => 'X', 'x.com' => 'X', 'max.ru' => 'MAX', 'whatsapp' => 'WhatsApp', 'linkedin.com' => 'LinkedIn',
 		);
@@ -253,12 +255,12 @@ class Bobr_Util {
 	}
 
 	public static function ip() {
-		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? (string) $_SERVER['REMOTE_ADDR'] : '';
+		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
 		$priv = ! filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE );
 		if ( $priv ) {
 			foreach ( array( 'HTTP_X_REAL_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_CF_CONNECTING_IP' ) as $k ) {
 				if ( ! empty( $_SERVER[ $k ] ) ) {
-					$cand = trim( explode( ',', (string) $_SERVER[ $k ] )[0] );
+					$cand = trim( explode( ',', sanitize_text_field( wp_unslash( $_SERVER[ $k ] ) ) )[0] );
 					if ( filter_var( $cand, FILTER_VALIDATE_IP ) ) {
 						return $cand;
 					}

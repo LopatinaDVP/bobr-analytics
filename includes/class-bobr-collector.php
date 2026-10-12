@@ -71,7 +71,7 @@ class Bobr_Collector {
 		if ( ! is_array( $d ) || empty( $d['t'] ) ) {
 			return self::done();
 		}
-		$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? substr( (string) $_SERVER['HTTP_USER_AGENT'], 0, 500 ) : '';
+		$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? substr( sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ), 0, 500 ) : '';
 		if ( Bobr_Util::bot( $ua ) ) {
 			return self::done();
 		}
@@ -110,7 +110,7 @@ class Bobr_Collector {
 	private static function open_visit( $vh ) {
 		global $wpdb;
 		$since = wp_date( 'Y-m-d H:i:s', time() - self::VISIT_GAP );
-		return $wpdb->get_row( $wpdb->prepare( 'SELECT id, pages FROM ' . Bobr_DB::t( 'visits' ) . ' WHERE vhash = %s AND last_seen >= %s ORDER BY id DESC LIMIT 1', $vh, $since ) );
+		return $wpdb->get_row( $wpdb->prepare( 'SELECT id, pages FROM %i WHERE vhash = %s AND last_seen >= %s ORDER BY id DESC LIMIT 1', Bobr_DB::t( 'visits' ), $vh, $since ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 	}
 
 	private static function pageview( $d, $vh, $ip, $ua, $pid ) {
@@ -144,13 +144,13 @@ class Bobr_Collector {
 		}
 
 		if ( $visit ) {
-			$wpdb->query( $wpdb->prepare( 'UPDATE ' . Bobr_DB::t( 'visits' ) . ' SET last_seen = %s, exit_path = %s, pages = pages + 1, bounce = 0, duration = GREATEST(duration, TIMESTAMPDIFF(SECOND, started, %s)) WHERE id = %d', $now, $path, $now, $visit->id ) );
+			$wpdb->query( $wpdb->prepare( 'UPDATE %i SET last_seen = %s, exit_path = %s, pages = pages + 1, bounce = 0, duration = GREATEST(duration, TIMESTAMPDIFF(SECOND, started, %s)) WHERE id = %d', Bobr_DB::t( 'visits' ), $now, $path, $now, $visit->id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 			$visit_id = (int) $visit->id;
 		} else {
 			list( $device, $os, $browser ) = Bobr_Util::ua( $ua );
 			$tz = Bobr_Util::str( $d['tz'] ?? '', 40 );
 			$geo = bobr_settings()['geo'] ? Bobr_Geo::locate( $ip, $tz ) : array( '', '', '' );
-			$wpdb->insert(
+			$wpdb->insert( // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 				Bobr_DB::t( 'visits' ),
 				array(
 					'vhash'        => $vh,
@@ -184,11 +184,11 @@ class Bobr_Collector {
 			);
 			$visit_id = (int) $wpdb->insert_id;
 		}
-		$wpdb->insert( Bobr_DB::t( 'hits' ), array( 'visit_id' => $visit_id, 'pid' => $pid, 'ts' => $now, 'day' => $day, 'path' => $path, 'title' => $title ) );
+		$wpdb->insert( Bobr_DB::t( 'hits' ), array( 'visit_id' => $visit_id, 'pid' => $pid, 'ts' => $now, 'day' => $day, 'path' => $path, 'title' => $title ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 
 		if ( ! empty( $d['nf'] ) ) {
-			$from = '' !== $ref_host ? $ref_host . $ref_path : '(без реферера)';
-			$wpdb->insert( Bobr_DB::t( 'events' ), array( 'visit_id' => $visit_id, 'ts' => $now, 'day' => $day, 'path' => $path, 'type' => 'nf', 'name' => Bobr_Util::str( $from, 250 ) ) );
+			$from = '' !== $ref_host ? $ref_host . $ref_path : __( '(no referrer)', 'bobr-analytics' );
+			$wpdb->insert( Bobr_DB::t( 'events' ), array( 'visit_id' => $visit_id, 'ts' => $now, 'day' => $day, 'path' => $path, 'type' => 'nf', 'name' => Bobr_Util::str( $from, 250 ) ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 		}
 	}
 
@@ -197,7 +197,7 @@ class Bobr_Collector {
 		if ( '' === $pid ) {
 			return null;
 		}
-		return $wpdb->get_row( $wpdb->prepare( 'SELECT id, visit_id, path FROM ' . Bobr_DB::t( 'hits' ) . ' WHERE pid = %s AND day >= %s ORDER BY id DESC LIMIT 1', $pid, wp_date( 'Y-m-d', time() - DAY_IN_SECONDS ) ) );
+		return $wpdb->get_row( $wpdb->prepare( 'SELECT id, visit_id, path FROM %i WHERE pid = %s AND day >= %s ORDER BY id DESC LIMIT 1', Bobr_DB::t( 'hits' ), $pid, wp_date( 'Y-m-d', time() - DAY_IN_SECONDS ) ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 	}
 
 	private static function leave( $d, $vh, $pid ) {
@@ -208,20 +208,20 @@ class Bobr_Collector {
 		}
 		$v = max( 0, min( 21600, (int) ( $d['v'] ?? 0 ) ) );
 		$s = max( 0, min( 100, (int) ( $d['s'] ?? 0 ) ) );
-		$wpdb->query( $wpdb->prepare( 'UPDATE ' . Bobr_DB::t( 'hits' ) . ' SET visible = GREATEST(visible, %d), scroll = GREATEST(scroll, %d) WHERE id = %d', $v, $s, $hit->id ) );
+		$wpdb->query( $wpdb->prepare( 'UPDATE %i SET visible = GREATEST(visible, %d), scroll = GREATEST(scroll, %d) WHERE id = %d', Bobr_DB::t( 'hits' ), $v, $s, $hit->id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 		$now = self::now();
-		$wpdb->query( $wpdb->prepare( 'UPDATE ' . Bobr_DB::t( 'visits' ) . ' SET last_seen = GREATEST(last_seen, %s), duration = GREATEST(duration, TIMESTAMPDIFF(SECOND, started, %s), %d) WHERE id = %d', $now, $now, $v, $hit->visit_id ) );
-		$wpdb->query( $wpdb->prepare( 'UPDATE ' . Bobr_DB::t( 'visits' ) . ' SET bounce = IF(pages <= 1 AND duration < 15, 1, 0) WHERE id = %d', $hit->visit_id ) );
+		$wpdb->query( $wpdb->prepare( 'UPDATE %i SET last_seen = GREATEST(last_seen, %s), duration = GREATEST(duration, TIMESTAMPDIFF(SECOND, started, %s), %d) WHERE id = %d', Bobr_DB::t( 'visits' ), $now, $now, $v, $hit->visit_id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
+		$wpdb->query( $wpdb->prepare( 'UPDATE %i SET bounce = IF(pages <= 1 AND duration < 15, 1, 0) WHERE id = %d', Bobr_DB::t( 'visits' ), $hit->visit_id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 
 		if ( ! empty( $d['m'] ) && is_array( $d['m'] ) ) {
-			$has = (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . Bobr_DB::t( 'events' ) . " WHERE day = %s AND type IN ('ttfb','fcp','lcp','inp','cls') AND name = %s", substr( $now, 0, 10 ), 'pid:' . $pid ) );
+			$has = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM %i WHERE day = %s AND type IN ('ttfb','fcp','lcp','inp','cls') AND name = %s", Bobr_DB::t( 'events' ), substr( $now, 0, 10 ), 'pid:' . $pid ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 			if ( ! $has ) {
 				$lim = array( 'ttfb' => 60000, 'fcp' => 60000, 'lcp' => 60000, 'inp' => 60000, 'cls' => 10 );
 				foreach ( $lim as $k => $max ) {
 					if ( isset( $d['m'][ $k ] ) && is_numeric( $d['m'][ $k ] ) ) {
 						$val = (float) $d['m'][ $k ];
 						if ( $val >= 0 && $val <= $max ) {
-							$wpdb->insert( Bobr_DB::t( 'events' ), array( 'visit_id' => $hit->visit_id, 'ts' => $now, 'day' => substr( $now, 0, 10 ), 'path' => $hit->path, 'type' => $k, 'name' => 'pid:' . $pid, 'val' => round( $val, 4 ) ) );
+							$wpdb->insert( Bobr_DB::t( 'events' ), array( 'visit_id' => $hit->visit_id, 'ts' => $now, 'day' => substr( $now, 0, 10 ), 'path' => $hit->path, 'type' => $k, 'name' => 'pid:' . $pid, 'val' => round( $val, 4 ) ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 						}
 					}
 				}
@@ -251,18 +251,18 @@ class Bobr_Collector {
 			$name = Bobr_Util::str( $d['n'] ?? '', 120 );
 		}
 		$now = self::now();
-		$wpdb->insert( Bobr_DB::t( 'events' ), array( 'visit_id' => $hit->visit_id, 'ts' => $now, 'day' => substr( $now, 0, 10 ), 'path' => $hit->path, 'type' => $types[ $k ], 'name' => Bobr_Util::str( $name, 250 ) ) );
+		$wpdb->insert( Bobr_DB::t( 'events' ), array( 'visit_id' => $hit->visit_id, 'ts' => $now, 'day' => substr( $now, 0, 10 ), 'path' => $hit->path, 'type' => $types[ $k ], 'name' => Bobr_Util::str( $name, 250 ) ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 	}
 
 	public static function detect_bot() {
 		if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) || ! bobr_settings()['bots'] ) {
 			return;
 		}
-		$uri = isset( $_SERVER['REQUEST_URI'] ) ? (string) $_SERVER['REQUEST_URI'] : '';
+		$uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 		if ( false !== strpos( $uri, '/wp-json/' ) || false !== strpos( $uri, 'rest_route=' ) ) {
 			return;
 		}
-		$ua  = isset( $_SERVER['HTTP_USER_AGENT'] ) ? (string) $_SERVER['HTTP_USER_AGENT'] : '';
+		$ua  = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
 		$bot = Bobr_Util::bot( $ua );
 		if ( ! $bot ) {
 			return;
@@ -279,6 +279,6 @@ class Bobr_Collector {
 		list( $bot, $path ) = self::$bot;
 		$now    = current_time( 'mysql' );
 		$status = (int) http_response_code();
-		$wpdb->insert( Bobr_DB::t( 'bots' ), array( 'ts' => $now, 'day' => substr( $now, 0, 10 ), 'bot' => Bobr_Util::str( $bot[0], 40 ), 'kind' => $bot[1], 'path' => $path, 'status' => $status > 0 ? $status : 200 ) );
+		$wpdb->insert( Bobr_DB::t( 'bots' ), array( 'ts' => $now, 'day' => substr( $now, 0, 10 ), 'bot' => Bobr_Util::str( $bot[0], 40 ), 'kind' => $bot[1], 'path' => $path, 'status' => $status > 0 ? $status : 200 ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- own statistics tables, live data.
 	}
 }

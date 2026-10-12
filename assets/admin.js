@@ -1,5 +1,6 @@
 (function () {
   'use strict';
+  var L = window.bobrL10n || { rows: 'Rows: %d', none: 'Nothing found', page: '%1$d-%2$d of %3$d' };
   document.querySelectorAll('.bobr-box').forEach(function (box) {
     var t = box.querySelector('table.bobr-t');
     if (!t) return;
@@ -14,9 +15,9 @@
       rows.forEach(function (r) { r.style.display = 'none'; });
       shown.slice(page * per, page * per + per).forEach(function (r) { r.style.display = ''; });
       pager.innerHTML = '';
-      if (shown.length <= per) { pager.textContent = shown.length ? 'Строк: ' + shown.length : 'Ничего не найдено'; return; }
+      if (shown.length <= per) { pager.textContent = shown.length ? L.rows.replace('%d', shown.length) : L.none; return; }
       var info = document.createElement('span');
-      info.textContent = (page * per + 1) + '-' + Math.min(shown.length, page * per + per) + ' из ' + shown.length;
+      info.textContent = L.page.replace('%1$d', page * per + 1).replace('%2$d', Math.min(shown.length, page * per + per)).replace('%3$d', shown.length);
       var prev = document.createElement('button'), next = document.createElement('button');
       prev.type = next.type = 'button'; prev.className = next.className = 'button';
       prev.textContent = '←'; next.textContent = '→';

@@ -1,21 +1,22 @@
 <?php
 /**
- * Plugin Name:       Бобр аналитика
+ * Plugin Name:       Bobr Analytics
  * Plugin URI:        https://github.com/LopatinaDVP/bobr-analytics
- * Description:       Своя статистика сайта без куки и без внешних сервисов: посетители, источники, нейросети, роботы, география, скорость. Данные хранятся в базе этого сайта.
- * Version:           1.2.0
- * Requires at least: 5.8
+ * Description:       Self-hosted website statistics without cookies or third-party services: visitors, sources, AI assistants, bots, geography, page speed. Data stays in this site's database.
+ * Version:           1.3.0
+ * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Ekaterina Lopatina
  * Author URI:        https://lop-pa.dev
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       bobr
+ * Text Domain:       bobr-analytics
+ * Domain Path:       /languages
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BOBR_VER', '1.2.0' );
+define( 'BOBR_VER', '1.3.0' );
 define( 'BOBR_DB_VER', '1' );
 define( 'BOBR_FILE', __FILE__ );
 define( 'BOBR_DIR', plugin_dir_path( __FILE__ ) );
@@ -34,6 +35,13 @@ register_activation_hook( __FILE__, array( 'Bobr_Cron', 'schedule' ) );
 register_deactivation_hook( __FILE__, array( 'Bobr_Cron', 'unschedule' ) );
 
 add_action( 'plugins_loaded', array( 'Bobr_DB', 'maybe_upgrade' ) );
+add_action(
+	'init',
+	function () {
+		load_plugin_textdomain( 'bobr-analytics', false, dirname( plugin_basename( BOBR_FILE ) ) . '/languages' );
+	},
+	0
+);
 Bobr_Collector::init();
 Bobr_Cron::init();
 

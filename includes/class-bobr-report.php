@@ -108,18 +108,18 @@ class Bobr_Report {
 	public function where( $prev = false, $alias = 'v' ) {
 		global $wpdb;
 		$a = $alias ? $alias . '.' : '';
-		$w = $wpdb->prepare( "{$a}day BETWEEN %s AND %s", $prev ? $this->pfrom : $this->from, $prev ? $this->pto : $this->to );
+		$w = $wpdb->prepare( "{$a}day BETWEEN %s AND %s", $prev ? $this->pfrom : $this->from, $prev ? $this->pto : $this->to ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $a is a fixed table alias from code ('v.' or empty), values are bound with placeholders.
 		if ( '' !== $this->f['src'] ) {
-			$w .= $wpdb->prepare( " AND {$a}src_type = %s", $this->f['src'] );
+			$w .= $wpdb->prepare( " AND {$a}src_type = %s", $this->f['src'] ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $a is a fixed table alias from code ('v.' or empty), values are bound with placeholders.
 		}
 		if ( '' !== $this->f['dev'] ) {
-			$w .= $wpdb->prepare( " AND {$a}device = %s", $this->f['dev'] );
+			$w .= $wpdb->prepare( " AND {$a}device = %s", $this->f['dev'] ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $a is a fixed table alias from code ('v.' or empty), values are bound with placeholders.
 		}
 		if ( '' !== $this->f['city'] ) {
-			$w .= $wpdb->prepare( " AND ({$a}city LIKE %s OR {$a}region LIKE %s OR {$a}country LIKE %s)", '%' . $wpdb->esc_like( $this->f['city'] ) . '%', '%' . $wpdb->esc_like( $this->f['city'] ) . '%', '%' . $wpdb->esc_like( $this->f['city'] ) . '%' );
+			$w .= $wpdb->prepare( " AND ({$a}city LIKE %s OR {$a}region LIKE %s OR {$a}country LIKE %s)", '%' . $wpdb->esc_like( $this->f['city'] ) . '%', '%' . $wpdb->esc_like( $this->f['city'] ) . '%', '%' . $wpdb->esc_like( $this->f['city'] ) . '%' ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $a is a fixed table alias from code ('v.' or empty), values are bound with placeholders.
 		}
 		if ( '' !== $this->f['page'] ) {
-			$w .= $wpdb->prepare( " AND {$a}id IN (SELECT visit_id FROM " . Bobr_DB::t( 'hits' ) . ' WHERE path LIKE %s)', '%' . $wpdb->esc_like( $this->f['page'] ) . '%' );
+			$w .= $wpdb->prepare( " AND {$a}id IN (SELECT visit_id FROM %i WHERE path LIKE %s)", Bobr_DB::t( 'hits' ), '%' . $wpdb->esc_like( $this->f['page'] ) . '%' ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $a is a fixed table alias from code ('v.' or empty), values are bound with placeholders.
 		}
 		return $w;
 	}
@@ -127,12 +127,12 @@ class Bobr_Report {
 	public function series( $prev = false ) {
 		global $wpdb;
 		$v    = Bobr_DB::t( 'visits' );
-		$rows = $wpdb->get_results( "SELECT day, COUNT(DISTINCT vhash) visitors, COUNT(*) visits, SUM(pages) views, SUM(bounce) bounces, SUM(duration) duration FROM $v v WHERE " . $this->where( $prev ) . ' GROUP BY day', OBJECT_K );
+		$rows = $wpdb->get_results( "SELECT day, COUNT(DISTINCT vhash) visitors, COUNT(*) visits, SUM(pages) views, SUM(bounce) bounces, SUM(duration) duration FROM $v v WHERE " . $this->where( $prev ) . ' GROUP BY day', OBJECT_K ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL, PluginCheck.Security.DirectDB.UnescapedDBParameter -- own statistics tables: table names come from $wpdb->prefix, columns and SQL expressions are fixed in code, user values are bound with $wpdb->prepare() in Bobr_Report::where().
 		$out  = array();
 		$days = $prev ? $this->days( $this->pfrom, $this->pto ) : $this->days();
 		$agg  = array();
 		if ( ! $this->has_filters() ) {
-			$agg = $wpdb->get_results( $wpdb->prepare( 'SELECT day, visitors, visits, views, bounces, duration FROM ' . Bobr_DB::t( 'daily' ) . " WHERE kind = 'site' AND day BETWEEN %s AND %s", reset( $days ), end( $days ) ), OBJECT_K );
+			$agg = $wpdb->get_results( $wpdb->prepare( "SELECT day, visitors, visits, views, bounces, duration FROM %i WHERE kind = 'site' AND day BETWEEN %s AND %s", Bobr_DB::t( 'daily' ), reset( $days ), end( $days ) ), OBJECT_K ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL, PluginCheck.Security.DirectDB.UnescapedDBParameter -- own statistics tables: table names come from $wpdb->prefix, columns and SQL expressions are fixed in code, user values are bound with $wpdb->prepare() in Bobr_Report::where().
 		}
 		foreach ( $days as $d ) {
 			$r = isset( $rows[ $d ] ) ? $rows[ $d ] : ( isset( $agg[ $d ] ) ? $agg[ $d ] : null );
@@ -163,13 +163,13 @@ class Bobr_Report {
 	public function group( $expr, $extra = '', $limit = 1000 ) {
 		global $wpdb;
 		$v = Bobr_DB::t( 'visits' );
-		return $wpdb->get_results( "SELECT $expr AS k, COUNT(*) visits, COUNT(DISTINCT vhash, day) visitors, ROUND(AVG(bounce)*100,1) bounce, ROUND(AVG(duration)) dur, ROUND(AVG(pages),2) depth FROM $v v WHERE " . $this->where() . " $extra GROUP BY k ORDER BY visits DESC LIMIT " . (int) $limit );
+		return $wpdb->get_results( "SELECT $expr AS k, COUNT(*) visits, COUNT(DISTINCT vhash, day) visitors, ROUND(AVG(bounce)*100,1) bounce, ROUND(AVG(duration)) dur, ROUND(AVG(pages),2) depth FROM $v v WHERE " . $this->where() . " $extra GROUP BY k ORDER BY visits DESC LIMIT " . (int) $limit ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL, PluginCheck.Security.DirectDB.UnescapedDBParameter -- own statistics tables: table names come from $wpdb->prefix, columns and SQL expressions are fixed in code, user values are bound with $wpdb->prepare() in Bobr_Report::where().
 	}
 
 	public function daily_visits( $extra = '' ) {
 		global $wpdb;
 		$v    = Bobr_DB::t( 'visits' );
-		$rows = $wpdb->get_results( 'SELECT ' . $this->bucket_sql( 'v' ) . " d, COUNT(*) n FROM $v v WHERE " . $this->where() . " $extra GROUP BY d", OBJECT_K );
+		$rows = $wpdb->get_results( 'SELECT ' . $this->bucket_sql( 'v' ) . " d, COUNT(*) n FROM $v v WHERE " . $this->where() . " $extra GROUP BY d", OBJECT_K ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL, PluginCheck.Security.DirectDB.UnescapedDBParameter -- own statistics tables: table names come from $wpdb->prefix, columns and SQL expressions are fixed in code, user values are bound with $wpdb->prepare() in Bobr_Report::where().
 		$out  = array();
 		foreach ( $this->buckets() as $d ) {
 			$out[ $d ] = isset( $rows[ $d ] ) ? (int) $rows[ $d ]->n : 0;
@@ -181,9 +181,9 @@ class Bobr_Report {
 		global $wpdb;
 		$v    = Bobr_DB::t( 'visits' );
 		$w    = $this->where() . " $extra";
-		$keys = $wpdb->get_col( "SELECT $expr k FROM $v v WHERE $w GROUP BY k ORDER BY COUNT(*) DESC LIMIT " . (int) $top );
+		$keys = $wpdb->get_col( "SELECT $expr k FROM $v v WHERE $w GROUP BY k ORDER BY COUNT(*) DESC LIMIT " . (int) $top ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL, PluginCheck.Security.DirectDB.UnescapedDBParameter -- own statistics tables: table names come from $wpdb->prefix, columns and SQL expressions are fixed in code, user values are bound with $wpdb->prepare() in Bobr_Report::where().
 		$by   = array();
-		foreach ( $wpdb->get_results( 'SELECT ' . $this->bucket_sql( 'v' ) . " d, $expr k, COUNT(*) n FROM $v v WHERE $w GROUP BY d, k" ) as $x ) {
+		foreach ( $wpdb->get_results( 'SELECT ' . $this->bucket_sql( 'v' ) . " d, $expr k, COUNT(*) n FROM $v v WHERE $w GROUP BY d, k" ) as $x ) { // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL, PluginCheck.Security.DirectDB.UnescapedDBParameter -- own statistics tables: table names come from $wpdb->prefix, columns and SQL expressions are fixed in code, user values are bound with $wpdb->prepare() in Bobr_Report::where().
 			$by[ (string) $x->k ][ $x->d ] = (int) $x->n;
 		}
 		$out = array();
@@ -202,7 +202,7 @@ class Bobr_Report {
 	public function day_where( $alias = '' ) {
 		global $wpdb;
 		$a = $alias ? $alias . '.' : '';
-		return $wpdb->prepare( "{$a}day BETWEEN %s AND %s", $this->from, $this->to );
+		return $wpdb->prepare( "{$a}day BETWEEN %s AND %s", $this->from, $this->to ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $a is a fixed table alias from code ('v.' or empty), values are bound with placeholders.
 	}
 
 	public static function p75( $vals ) {

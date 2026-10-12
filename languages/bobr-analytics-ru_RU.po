@@ -1,0 +1,1355 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bobr Analytics 1.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/LopatinaDVP/bobr-analytics/issues\n"
+"POT-Creation-Date: 2026-10-12 16:17+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: bobr-analytics\n"
+"PO-Revision-Date: 2026-10-12 16:17+0000\n"
+"Last-Translator: Ekaterina Lopatina\n"
+"Language-Team: Russian\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: includes/class-bobr-admin.php:23
+msgid "Summary"
+msgstr "Сводка"
+
+#: includes/class-bobr-admin.php:24 includes/class-bobr-admin.php:377 includes/class-bobr-admin.php:409
+msgid "Entry pages"
+msgstr "Страницы входа"
+
+#: includes/class-bobr-admin.php:25
+msgid "All pages and exits"
+msgstr "Все страницы и выходы"
+
+#: includes/class-bobr-admin.php:26 includes/class-bobr-admin.php:372 includes/class-bobr-admin.php:409
+msgid "Sources"
+msgstr "Источники"
+
+#: includes/class-bobr-admin.php:27 includes/class-bobr-admin.php:161 includes/class-bobr-admin.php:492 includes/class-bobr-util.php:91
+msgid "AI assistants"
+msgstr "Нейросети"
+
+#: includes/class-bobr-admin.php:28 includes/class-bobr-admin.php:167 includes/class-bobr-admin.php:527 includes/class-bobr-admin.php:532
+msgid "Bots"
+msgstr "Роботы"
+
+#: includes/class-bobr-admin.php:29
+msgid "Geography"
+msgstr "География"
+
+#: includes/class-bobr-admin.php:30
+msgid "Technology"
+msgstr "Технологии"
+
+#: includes/class-bobr-admin.php:31 includes/class-bobr-admin.php:396 includes/class-bobr-admin.php:409 includes/class-bobr-admin.php:443 includes/class-bobr-admin.php:460 includes/class-bobr-admin.php:472 includes/class-bobr-admin.php:492 includes/class-bobr-admin.php:570
+msgid "Time"
+msgstr "Время"
+
+#: includes/class-bobr-admin.php:32
+msgid "Behavior"
+msgstr "Поведение"
+
+#: includes/class-bobr-admin.php:33
+msgid "Events"
+msgstr "События"
+
+#: includes/class-bobr-admin.php:34
+msgid "404 errors"
+msgstr "Ошибки 404"
+
+#: includes/class-bobr-admin.php:35
+msgid "Speed"
+msgstr "Скорость"
+
+#: includes/class-bobr-admin.php:36 includes/class-bobr-admin.php:757
+msgid "Live now"
+msgstr "Сейчас на сайте"
+
+#: includes/class-bobr-admin.php:37 includes/class-bobr-admin.php:57
+msgid "Settings"
+msgstr "Настройки"
+
+#: includes/class-bobr-admin.php:52 includes/class-bobr-admin.php:52 includes/class-bobr-admin.php:117
+msgid "Bobr Analytics"
+msgstr "Бобр аналитика"
+
+#: includes/class-bobr-admin.php:64
+msgid "Feedback"
+msgstr "Обратная связь"
+
+#. translators: %d: number of table rows
+#: includes/class-bobr-admin.php:81
+#, php-format
+msgid "Rows: %d"
+msgstr "Строк: %d"
+
+#: includes/class-bobr-admin.php:82
+msgid "Nothing found"
+msgstr "Ничего не найдено"
+
+#. translators: 1: first row, 2: last row, 3: total rows
+#: includes/class-bobr-admin.php:84
+#, php-format
+msgid "%1$d-%2$d of %3$d"
+msgstr "%1$d-%2$d из %3$d"
+
+#: includes/class-bobr-admin.php:109 includes/class-bobr-admin.php:822 includes/class-bobr-admin.php:834
+msgid "You do not have permission to do this."
+msgstr "Нет прав."
+
+#: includes/class-bobr-admin.php:118
+msgid "Your own website statistics: no cookies, data stays in this site's database."
+msgstr "Своя статистика сайта: без куки, данные хранятся только в базе этого сайта."
+
+#: includes/class-bobr-admin.php:134
+msgid "Saved."
+msgstr "Сохранено."
+
+#: includes/class-bobr-admin.php:134
+msgid "The city database has been downloaded and connected."
+msgstr "База городов скачана и подключена."
+
+#: includes/class-bobr-admin.php:134
+msgid "Daily totals have been recalculated."
+msgstr "Суммы по дням пересчитаны."
+
+#. translators: %s: technical error message
+#: includes/class-bobr-admin.php:140
+#, php-format
+msgid "The city database could not be downloaded: %s"
+msgstr "База городов не скачалась: %s"
+
+#: includes/class-bobr-admin.php:150
+msgid "Today"
+msgstr "Сегодня"
+
+#: includes/class-bobr-admin.php:150
+msgid "Yesterday"
+msgstr "Вчера"
+
+#: includes/class-bobr-admin.php:150
+msgid "7 days"
+msgstr "7 дней"
+
+#: includes/class-bobr-admin.php:150
+msgid "30 days"
+msgstr "30 дней"
+
+#: includes/class-bobr-admin.php:150
+msgid "This month"
+msgstr "Месяц"
+
+#: includes/class-bobr-admin.php:154
+msgid "compare with the previous period"
+msgstr "сравнить с прошлым периодом"
+
+#: includes/class-bobr-admin.php:155
+msgid "Charts:"
+msgstr "Графики:"
+
+#: includes/class-bobr-admin.php:156 includes/class-bobr-admin.php:308
+msgid "by day"
+msgstr "по дням"
+
+#: includes/class-bobr-admin.php:156 includes/class-bobr-admin.php:308
+msgid "by week"
+msgstr "по неделям"
+
+#: includes/class-bobr-admin.php:156 includes/class-bobr-admin.php:308
+msgid "by month"
+msgstr "по месяцам"
+
+#: includes/class-bobr-admin.php:161 includes/class-bobr-admin.php:434
+msgid "All sources"
+msgstr "Все источники"
+
+#: includes/class-bobr-admin.php:161 includes/class-bobr-admin.php:465 includes/class-bobr-util.php:90
+msgid "Search engines"
+msgstr "Поисковики"
+
+#: includes/class-bobr-admin.php:161 includes/class-bobr-util.php:95
+msgid "Social networks"
+msgstr "Соцсети"
+
+#: includes/class-bobr-admin.php:161 includes/class-bobr-util.php:96
+msgid "Websites"
+msgstr "Сайты"
+
+#: includes/class-bobr-admin.php:161 includes/class-bobr-util.php:99
+msgid "UTM campaigns"
+msgstr "Рекламные метки"
+
+#: includes/class-bobr-admin.php:161 includes/class-bobr-util.php:97 includes/class-bobr-util.php:252
+msgid "Direct"
+msgstr "Прямые заходы"
+
+#: includes/class-bobr-admin.php:161 includes/class-bobr-util.php:98
+msgid "Internal"
+msgstr "Внутренние"
+
+#: includes/class-bobr-admin.php:162
+msgid "All devices"
+msgstr "Все устройства"
+
+#: includes/class-bobr-admin.php:162 includes/class-bobr-util.php:100
+msgid "Desktop"
+msgstr "Компьютер"
+
+#: includes/class-bobr-admin.php:162 includes/class-bobr-util.php:101
+msgid "Mobile"
+msgstr "Телефон"
+
+#: includes/class-bobr-admin.php:162 includes/class-bobr-util.php:102
+msgid "Tablet"
+msgstr "Планшет"
+
+#: includes/class-bobr-admin.php:164
+msgid "City or region"
+msgstr "Город или регион"
+
+#: includes/class-bobr-admin.php:165
+msgid "Page contains"
+msgstr "Страница содержит"
+
+#: includes/class-bobr-admin.php:167
+msgid "People"
+msgstr "Люди"
+
+#: includes/class-bobr-admin.php:169
+msgid "Apply"
+msgstr "Показать"
+
+#: includes/class-bobr-admin.php:171
+msgid "Reset filters"
+msgstr "Сбросить фильтры"
+
+#. translators: %s: date range of the previous period, for example 1 May - 31 May
+#: includes/class-bobr-admin.php:174
+#, php-format
+msgid "compared with %s"
+msgstr "сравнение с %s"
+
+#. translators: %d: number of seconds
+#: includes/class-bobr-admin.php:191
+#, php-format
+msgid "%d s"
+msgstr "%d с"
+
+#. translators: 1: minutes; 2: seconds, always two digits
+#: includes/class-bobr-admin.php:194
+#, php-format
+msgid "%1$d min %2$s s"
+msgstr "%1$d мин %2$s с"
+
+#: includes/class-bobr-admin.php:202
+msgid "new"
+msgstr "новое"
+
+#: includes/class-bobr-admin.php:223
+msgid "Search"
+msgstr "Поиск"
+
+#: includes/class-bobr-admin.php:225 includes/class-bobr-admin.php:290 includes/class-bobr-charts.php:247
+msgid "No data for this period yet."
+msgstr "Пока нет данных за этот период."
+
+#. translators: %s: time in milliseconds
+#: includes/class-bobr-admin.php:265
+#, php-format
+msgid "%s ms"
+msgstr "%s мс"
+
+#: includes/class-bobr-admin.php:298 includes/class-bobr-admin.php:561 includes/class-bobr-admin.php:568 includes/class-bobr-admin.php:583 includes/class-bobr-geo.php:105
+msgid "Not detected"
+msgstr "Не определено"
+
+#. translators: %s: chart line name, for example Visits
+#: includes/class-bobr-admin.php:315
+#, php-format
+msgid "%s (previous period)"
+msgstr "%s (прошлый период)"
+
+#: includes/class-bobr-admin.php:332 includes/class-bobr-admin.php:343
+msgid "Visitors"
+msgstr "Посетители"
+
+#: includes/class-bobr-admin.php:332
+msgid "Without cookies a visitor is recognized only within one day: over several days this is the sum of daily visitors."
+msgstr "Без куки посетитель узнаётся только в пределах суток: за несколько дней это сумма посетителей по дням."
+
+#: includes/class-bobr-admin.php:333 includes/class-bobr-admin.php:342 includes/class-bobr-admin.php:347 includes/class-bobr-admin.php:372 includes/class-bobr-admin.php:377 includes/class-bobr-admin.php:390 includes/class-bobr-admin.php:396 includes/class-bobr-admin.php:409 includes/class-bobr-admin.php:420 includes/class-bobr-admin.php:438 includes/class-bobr-admin.php:443 includes/class-bobr-admin.php:460 includes/class-bobr-admin.php:465 includes/class-bobr-admin.php:472 includes/class-bobr-admin.php:478 includes/class-bobr-admin.php:492 includes/class-bobr-admin.php:498 includes/class-bobr-admin.php:563 includes/class-bobr-admin.php:570 includes/class-bobr-admin.php:594
+msgid "Visits"
+msgstr "Визиты"
+
+#: includes/class-bobr-admin.php:334 includes/class-bobr-admin.php:344 includes/class-bobr-admin.php:420 includes/class-bobr-admin.php:639
+msgid "Pageviews"
+msgstr "Просмотры"
+
+#: includes/class-bobr-admin.php:335 includes/class-bobr-admin.php:372 includes/class-bobr-admin.php:377 includes/class-bobr-admin.php:396 includes/class-bobr-admin.php:409 includes/class-bobr-admin.php:443 includes/class-bobr-admin.php:460 includes/class-bobr-admin.php:465 includes/class-bobr-admin.php:472 includes/class-bobr-admin.php:478 includes/class-bobr-admin.php:492 includes/class-bobr-admin.php:563 includes/class-bobr-admin.php:570 includes/class-bobr-admin.php:594
+msgid "Bounce rate"
+msgstr "Отказы"
+
+#: includes/class-bobr-admin.php:335
+msgid "One page and less than 15 seconds."
+msgstr "Одна страница и меньше 15 секунд."
+
+#: includes/class-bobr-admin.php:336 includes/class-bobr-admin.php:396 includes/class-bobr-admin.php:409 includes/class-bobr-admin.php:425 includes/class-bobr-admin.php:472 includes/class-bobr-admin.php:594
+msgid "Depth"
+msgstr "Глубина"
+
+#: includes/class-bobr-admin.php:336
+msgid "Pages per visit."
+msgstr "Страниц за визит."
+
+#: includes/class-bobr-admin.php:337
+msgid "Time on site"
+msgstr "Время на сайте"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:350
+#, php-format
+msgid "Traffic %s"
+msgstr "Посещаемость %s"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:352
+#, php-format
+msgid "Visits by source type %s"
+msgstr "Визиты по типам источников %s"
+
+#: includes/class-bobr-admin.php:362 includes/class-bobr-admin.php:362
+#, php-format
+msgid "Bounce rate, %"
+msgstr "Отказы, %"
+
+#: includes/class-bobr-admin.php:363
+msgid "Time on site, seconds"
+msgstr "Время на сайте, секунд"
+
+#: includes/class-bobr-admin.php:363
+msgid "Time on site, s"
+msgstr "Время на сайте, с"
+
+#: includes/class-bobr-admin.php:372 includes/class-bobr-admin.php:396 includes/class-bobr-admin.php:472 includes/class-bobr-admin.php:757
+msgid "Source"
+msgstr "Источник"
+
+#: includes/class-bobr-admin.php:377 includes/class-bobr-admin.php:409 includes/class-bobr-admin.php:420 includes/class-bobr-admin.php:425 includes/class-bobr-admin.php:443 includes/class-bobr-admin.php:498 includes/class-bobr-admin.php:537 includes/class-bobr-admin.php:547 includes/class-bobr-admin.php:639 includes/class-bobr-admin.php:679 includes/class-bobr-admin.php:684 includes/class-bobr-admin.php:734
+msgid "Page"
+msgstr "Страница"
+
+#: includes/class-bobr-admin.php:386
+msgid "All entry pages"
+msgstr "Все страницы входа"
+
+#. translators: %s: page address
+#: includes/class-bobr-admin.php:390
+#, php-format
+msgid "Visits that started on %s"
+msgstr "Визиты со входом на %s"
+
+#: includes/class-bobr-admin.php:396
+msgid "Where visitors of this page come from"
+msgstr "Откуда приходят на эту страницу"
+
+#: includes/class-bobr-admin.php:396 includes/class-bobr-admin.php:460 includes/class-bobr-admin.php:472 includes/class-bobr-admin.php:532
+msgid "Type"
+msgstr "Тип"
+
+#: includes/class-bobr-admin.php:420
+msgid "All pages"
+msgstr "Все страницы"
+
+#: includes/class-bobr-admin.php:420
+msgid "Title"
+msgstr "Заголовок"
+
+#: includes/class-bobr-admin.php:420
+msgid "Time on page"
+msgstr "Время на странице"
+
+#: includes/class-bobr-admin.php:420
+msgid "Scroll depth"
+msgstr "Прокрутка"
+
+#: includes/class-bobr-admin.php:425
+msgid "Exit pages"
+msgstr "Страницы выхода"
+
+#: includes/class-bobr-admin.php:425
+msgid "Visits ended here"
+msgstr "Визиты закончились здесь"
+
+#: includes/class-bobr-admin.php:425
+msgid "Visit duration"
+msgstr "Время визита"
+
+#. translators: %s: traffic source, for example Search, Google
+#: includes/class-bobr-admin.php:438
+#, php-format
+msgid "Visits: %s"
+msgstr "Визиты: %s"
+
+#: includes/class-bobr-admin.php:443
+msgid "Entry pages from this source"
+msgstr "Страницы входа из этого источника"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:448
+#, php-format
+msgid "Source types %s"
+msgstr "Типы источников %s"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:451
+#, php-format
+msgid "Search engines %s"
+msgstr "Поисковики %s"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:453
+#, php-format
+msgid "Social networks %s"
+msgstr "Соцсети %s"
+
+#: includes/class-bobr-admin.php:460
+msgid "Source types"
+msgstr "Типы источников"
+
+#: includes/class-bobr-admin.php:465
+msgid "Search engine"
+msgstr "Поисковик"
+
+#: includes/class-bobr-admin.php:472
+msgid "All sources (click to see entry pages)"
+msgstr "Все источники (нажмите, чтобы увидеть страницы входа)"
+
+#: includes/class-bobr-admin.php:478
+msgid "UTM tags"
+msgstr "utm-метки"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:486
+#, php-format
+msgid "Visits from AI assistants %s"
+msgstr "Переходы людей из нейросетей %s"
+
+#: includes/class-bobr-admin.php:486
+msgid "Visits from AI assistants"
+msgstr "Визиты из нейросетей"
+
+#: includes/class-bobr-admin.php:492 includes/class-bobr-admin.php:498
+msgid "AI assistant"
+msgstr "Нейросеть"
+
+#: includes/class-bobr-admin.php:498
+msgid "Pages that AI assistants link to"
+msgstr "На какие страницы ведут нейросети"
+
+#: includes/class-bobr-admin.php:499
+msgid "The AI assistant is detected by the referring address and by the utm_source tag (ChatGPT adds it automatically). Some visits from AI apps arrive without a referrer and are counted as direct."
+msgstr "Нейросеть определяется по адресу, с которого пришёл человек, и по метке utm_source (ChatGPT добавляет её сам). Часть переходов из приложений нейросетей приходит без адреса и попадает в прямые заходы."
+
+#: includes/class-bobr-admin.php:524
+msgid "Bot tracking is turned off in the settings."
+msgstr "Учёт роботов выключен в настройках."
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:527
+#, php-format
+msgid "Bot requests %s"
+msgstr "Запросы роботов %s"
+
+#: includes/class-bobr-admin.php:532
+msgid "Bot"
+msgstr "Робот"
+
+#: includes/class-bobr-admin.php:532 includes/class-bobr-admin.php:537 includes/class-bobr-admin.php:547
+msgid "Requests"
+msgstr "Запросы"
+
+#: includes/class-bobr-admin.php:532
+msgid "Distinct pages"
+msgstr "Разных страниц"
+
+#: includes/class-bobr-admin.php:532
+msgid "4xx-5xx errors"
+msgstr "Ошибки 4xx-5xx"
+
+#: includes/class-bobr-admin.php:532
+msgid "Last visit"
+msgstr "Последний заход"
+
+#: includes/class-bobr-admin.php:537
+msgid "AI agents: what they read"
+msgstr "Нейросетевые агенты: что читали"
+
+#: includes/class-bobr-admin.php:537
+msgid "Agent"
+msgstr "Агент"
+
+#: includes/class-bobr-admin.php:537 includes/class-bobr-admin.php:696
+msgid "Last time"
+msgstr "Последний раз"
+
+#: includes/class-bobr-admin.php:542
+msgid "When bots come: days of the week and hours"
+msgstr "Когда приходят роботы: дни недели и часы"
+
+#: includes/class-bobr-admin.php:547
+msgid "Pages that bots request"
+msgstr "Какие страницы смотрят роботы"
+
+#: includes/class-bobr-admin.php:547
+msgid "Distinct bots"
+msgstr "Разных роботов"
+
+#: includes/class-bobr-admin.php:547
+msgid "404 responses"
+msgstr "Ответов 404"
+
+#: includes/class-bobr-admin.php:553
+msgid "The city database is not connected: country and region are estimated from the browser time zone. You can connect the database in Settings."
+msgstr "База городов не подключена: страна и пояс определяются по часовому поясу браузера. Подключить базу можно в Настройках."
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:556
+#, php-format
+msgid "Top five cities %s"
+msgstr "Пять главных городов %s"
+
+#: includes/class-bobr-admin.php:558
+msgid "Countries"
+msgstr "Страны"
+
+#: includes/class-bobr-admin.php:558
+msgid "Regions"
+msgstr "Регионы"
+
+#: includes/class-bobr-admin.php:570
+msgid "Cities"
+msgstr "Города"
+
+#: includes/class-bobr-admin.php:570 includes/class-bobr-admin.php:757
+msgid "City"
+msgstr "Город"
+
+#: includes/class-bobr-admin.php:571
+msgid "On mobile internet the city is often inaccurate: carriers route traffic through large cities."
+msgstr "По мобильному интернету город часто определяется неточно: операторы выходят в интернет через крупные города, чаще всего через Москву."
+
+#: includes/class-bobr-admin.php:579
+msgid "Devices"
+msgstr "Устройства"
+
+#: includes/class-bobr-admin.php:579
+msgid "Operating systems"
+msgstr "Операционные системы"
+
+#: includes/class-bobr-admin.php:579
+msgid "Browsers"
+msgstr "Браузеры"
+
+#: includes/class-bobr-admin.php:579
+msgid "Screen width"
+msgstr "Ширина экрана"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:587
+#, php-format
+msgid "Mobile and desktop: share of visits %s"
+msgstr "Телефоны и компьютеры: доли визитов %s"
+
+#: includes/class-bobr-admin.php:607
+msgid "Visits by day of the week and hour"
+msgstr "Визиты по дням недели и часам"
+
+#: includes/class-bobr-admin.php:607
+msgid "Times are in the site time zone."
+msgstr "Время по часовому поясу сайта."
+
+#: includes/class-bobr-admin.php:616
+msgid "Visits by hour of the day"
+msgstr "Визиты по часам суток"
+
+#: includes/class-bobr-admin.php:616 includes/class-bobr-admin.php:617
+msgid "visits"
+msgstr "визиты"
+
+#: includes/class-bobr-admin.php:617
+msgid "Visits by day of the week"
+msgstr "Визиты по дням недели"
+
+#: includes/class-bobr-admin.php:632
+msgid "Time on page, seconds"
+msgstr "Время на странице, секунд"
+
+#: includes/class-bobr-admin.php:632
+msgid "Visible time, s"
+msgstr "Время на виду, с"
+
+#: includes/class-bobr-admin.php:633
+#, php-format
+msgid "Scroll depth, %"
+msgstr "Прокрутка страницы, %"
+
+#: includes/class-bobr-admin.php:633
+#, php-format
+msgid "Average scroll depth, %"
+msgstr "Средняя прокрутка, %"
+
+#: includes/class-bobr-admin.php:639
+msgid "Time and scroll depth by page"
+msgstr "Время и прокрутка по страницам"
+
+#: includes/class-bobr-admin.php:639
+msgid "Visible time"
+msgstr "Время на виду"
+
+#: includes/class-bobr-admin.php:639
+msgid "Average scroll depth"
+msgstr "Средняя прокрутка"
+
+#: includes/class-bobr-admin.php:639
+#, php-format
+msgid "Read to 75%"
+msgstr "Дочитали до 75%"
+
+#: includes/class-bobr-admin.php:639
+msgid "Left within 10 s"
+msgstr "Ушли за 10 с"
+
+#: includes/class-bobr-admin.php:640
+msgid "Visible time counts only while the tab is in front of the visitor: a hidden tab is not counted."
+msgstr "Время на виду считается только пока вкладка открыта перед глазами: свёрнутая вкладка не считается."
+
+#: includes/class-bobr-admin.php:648
+msgid "Phone clicks"
+msgstr "Нажали на телефон"
+
+#: includes/class-bobr-admin.php:648
+msgid "Email clicks"
+msgstr "Нажали на почту"
+
+#: includes/class-bobr-admin.php:648
+msgid "Outbound link clicks"
+msgstr "Ушли по внешним ссылкам"
+
+#: includes/class-bobr-admin.php:648
+msgid "Forms submitted"
+msgstr "Отправили формы"
+
+#: includes/class-bobr-admin.php:648
+msgid "Forms abandoned"
+msgstr "Бросили формы"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:669
+#, php-format
+msgid "Visitor actions %s"
+msgstr "Действия посетителей %s"
+
+#: includes/class-bobr-admin.php:674
+msgid "Outbound links"
+msgstr "Уходы по внешним ссылкам"
+
+#: includes/class-bobr-admin.php:674
+msgid "Destination"
+msgstr "Куда"
+
+#: includes/class-bobr-admin.php:674
+msgid "Clicks"
+msgstr "Переходы"
+
+#: includes/class-bobr-admin.php:674
+msgid "From distinct pages"
+msgstr "С разных страниц"
+
+#: includes/class-bobr-admin.php:679
+msgid "Forms"
+msgstr "Формы"
+
+#: includes/class-bobr-admin.php:679
+msgid "Form"
+msgstr "Форма"
+
+#: includes/class-bobr-admin.php:679
+msgid "Submitted"
+msgstr "Отправлены"
+
+#: includes/class-bobr-admin.php:679
+msgid "Started and abandoned"
+msgstr "Начаты и брошены"
+
+#: includes/class-bobr-admin.php:684
+msgid "Where visitors click phone and email links"
+msgstr "Где нажимают на телефон и почту"
+
+#: includes/class-bobr-admin.php:684
+msgid "Calls"
+msgstr "Звонки"
+
+#: includes/class-bobr-admin.php:684
+msgid "Email"
+msgstr "Почта"
+
+#: includes/class-bobr-admin.php:685
+msgid "Phone numbers, email addresses and form field values are never recorded: only the click itself and the form name."
+msgstr "Номера телефонов, адреса почты и значения полей форм не записываются: только сам факт нажатия и название формы."
+
+#: includes/class-bobr-admin.php:696
+msgid "404 pages seen by people: where they came from"
+msgstr "Страницы 404 у людей: откуда пришли"
+
+#: includes/class-bobr-admin.php:696
+msgid "Missing address"
+msgstr "Адрес, которого нет"
+
+#: includes/class-bobr-admin.php:696
+msgid "Came from"
+msgstr "Откуда пришли"
+
+#: includes/class-bobr-admin.php:696
+msgid "Times"
+msgstr "Раз"
+
+#: includes/class-bobr-admin.php:697
+msgid "404 errors seen by bots are in the Bots section."
+msgstr "Ошибки 404 у роботов смотрите в разделе Роботы."
+
+#: includes/class-bobr-admin.php:711 includes/class-bobr-admin.php:734
+msgid "Server response"
+msgstr "Ответ сервера"
+
+#: includes/class-bobr-admin.php:711 includes/class-bobr-admin.php:734
+msgid "First paint"
+msgstr "Первая отрисовка"
+
+#: includes/class-bobr-admin.php:711 includes/class-bobr-admin.php:734
+msgid "Main content (LCP)"
+msgstr "Главный блок (LCP)"
+
+#: includes/class-bobr-admin.php:711 includes/class-bobr-admin.php:734
+msgid "Responsiveness (INP)"
+msgstr "Отклик (INP)"
+
+#. translators: %s: chart step: by day, by week or by month
+#: includes/class-bobr-admin.php:721
+#, php-format
+msgid "Speed %s, ms (75th percentile)"
+msgstr "Скорость %s, мс (75-й процентиль)"
+
+#: includes/class-bobr-admin.php:734
+msgid "Speed by page: 75th percentile"
+msgstr "Скорость по страницам: 75-й процентиль"
+
+#: includes/class-bobr-admin.php:734
+msgid "Samples"
+msgstr "Замеров"
+
+#: includes/class-bobr-admin.php:734
+msgid "Layout shifts (CLS)"
+msgstr "Сдвиги (CLS)"
+
+#: includes/class-bobr-admin.php:735
+msgid "Green is good, yellow needs improvement, red is poor (Google Core Web Vitals thresholds). 75th percentile: three out of four visitors got this result or better."
+msgstr "Зелёный - хорошо, жёлтый - терпимо, красный - плохо (пороги Google Core Web Vitals). 75-й процентиль: у трёх из четырёх посетителей было так или быстрее."
+
+#: includes/class-bobr-admin.php:750
+msgid "Visits in the last 30 minutes"
+msgstr "Визитов за 30 минут"
+
+#: includes/class-bobr-admin.php:751
+msgid "Active in the last 5 minutes"
+msgstr "Активны последние 5 минут"
+
+#: includes/class-bobr-admin.php:757
+msgid "Last activity"
+msgstr "Активность"
+
+#: includes/class-bobr-admin.php:757
+msgid "Entry"
+msgstr "Вход"
+
+#: includes/class-bobr-admin.php:757
+msgid "Current page"
+msgstr "Сейчас на странице"
+
+#: includes/class-bobr-admin.php:757
+msgid "Pages"
+msgstr "Страниц"
+
+#: includes/class-bobr-admin.php:757
+msgid "Device"
+msgstr "Устройство"
+
+#: includes/class-bobr-admin.php:768
+msgid "Who not to count"
+msgstr "Кого не считать"
+
+#: includes/class-bobr-admin.php:772
+msgid "Logged-in users with the selected roles are not counted."
+msgstr "Вошедшие на сайт пользователи с отмеченными ролями не попадают в статистику."
+
+#. translators: %d: number of excluded IP addresses
+#: includes/class-bobr-admin.php:774
+msgid "Your own IP addresses"
+msgstr "Свои айпи-адреса"
+
+#: includes/class-bobr-admin.php:774
+#, php-format
+msgid "Excluded addresses: %d. They are stored only as hashes and cannot be read back."
+msgstr "Исключено адресов: %d. Адреса хранятся только в виде хешей, прочитать их обратно нельзя."
+
+#: includes/class-bobr-admin.php:775
+msgid "Add IP addresses, one per line"
+msgstr "Добавить айпи, по одному в строке"
+
+#. translators: %s: IP address of the current user
+#: includes/class-bobr-admin.php:777
+#, php-format
+msgid "Add my current IP (%s)"
+msgstr "Добавить мой текущий айпи (%s)"
+
+#: includes/class-bobr-admin.php:777
+msgid "Clear the list"
+msgstr "Очистить список"
+
+#: includes/class-bobr-admin.php:778
+msgid "Storage and collection"
+msgstr "Хранение и сбор"
+
+#: includes/class-bobr-admin.php:779
+msgid "Keep detailed records, days:"
+msgstr "Подробные записи хранить, дней:"
+
+#: includes/class-bobr-admin.php:779
+msgid "Older records are deleted at night. Daily totals without personal data are kept forever."
+msgstr "Потом удаляются по ночам. Суммы по дням без данных о людях хранятся бессрочно."
+
+#: includes/class-bobr-admin.php:780
+msgid "Detect the city by IP (the IP is discarded right after that)"
+msgstr "Определять город по айпи (айпи после определения отбрасывается)"
+
+#: includes/class-bobr-admin.php:781
+msgid "Record bots"
+msgstr "Записывать роботов"
+
+#: includes/class-bobr-admin.php:782
+msgid "Save settings"
+msgstr "Сохранить настройки"
+
+#: includes/class-bobr-admin.php:785
+msgid "City database"
+msgstr "База городов"
+
+#. translators: 1: database file size, for example 130 MB; 2: date of the last update
+#: includes/class-bobr-admin.php:791
+#, php-format
+msgid "Connected: %1$s, updated %2$s."
+msgstr "Подключена: %1$s, обновлена %2$s."
+
+#. translators: %s: database file size, for example 130 MB
+#: includes/class-bobr-admin.php:794
+#, php-format
+msgid "Connected: %s."
+msgstr "Подключена: %s."
+
+#: includes/class-bobr-admin.php:798
+msgid "Not connected. Until it is, country and region are estimated from the browser time zone."
+msgstr "Не подключена. Пока её нет, страна и пояс определяются по часовому поясу браузера."
+
+#: includes/class-bobr-admin.php:800
+msgid "The DB-IP IP to City Lite file from db-ip.com: about 60 MB to download, about 130 MB on disk after unpacking. Free, no registration, updated monthly. The button makes a single request to db-ip.com, visitor data is never sent anywhere."
+msgstr "Файл DB-IP IP to City Lite с сайта db-ip.com: архив около 60 МБ, после распаковки около 130 МБ на диске сайта. Бесплатно, без регистрации, обновляется раз в месяц. Кнопка делает один запрос к db-ip.com, данные посетителей никуда не отправляются."
+
+#: includes/class-bobr-admin.php:801
+msgid "Download the city database from db-ip.com (about 60 MB)?"
+msgstr "Скачать базу городов с db-ip.com (около 60 МБ)?"
+
+#: includes/class-bobr-admin.php:803
+msgid "Update the city database"
+msgstr "Обновить базу городов"
+
+#: includes/class-bobr-admin.php:803
+msgid "Download the city database"
+msgstr "Скачать базу городов"
+
+#: includes/class-bobr-admin.php:804
+msgid "(CC BY 4.0 license)"
+msgstr "(лицензия CC BY 4.0)"
+
+#: includes/class-bobr-admin.php:806
+msgid "Maintenance"
+msgstr "Служебное"
+
+#: includes/class-bobr-admin.php:808
+msgid "Daily totals are recalculated every night. Recalculate the last 30 days now:"
+msgstr "Суммы по дням пересчитываются каждую ночь. Пересчитать вручную за последние 30 дней:"
+
+#: includes/class-bobr-admin.php:809
+msgid "Recalculate"
+msgstr "Пересчитать"
+
+#: includes/class-bobr-admin.php:810
+msgid "This site uses a page cache: bots on cached pages are not counted, people are counted in full."
+msgstr "На сайте есть кэш страниц: роботы на закэшированных страницах не учитываются, люди учитываются полностью."
+
+#: includes/class-bobr-admin.php:810
+msgid "This site has no page cache: bots are counted in full."
+msgstr "Кэша страниц на сайте нет: роботы учитываются полностью."
+
+#: includes/class-bobr-admin.php:812
+msgid "About"
+msgstr "О плагине"
+
+#. translators: %s: plugin version number
+#: includes/class-bobr-admin.php:814
+#, php-format
+msgid "Bobr Analytics %s, a free open source plugin."
+msgstr "Бобр аналитика %s, бесплатный плагин с открытым кодом."
+
+#: includes/class-bobr-admin.php:814
+msgid "Author:"
+msgstr "Автор:"
+
+#: includes/class-bobr-admin.php:815
+msgid "Source code on GitHub"
+msgstr "Код на GitHub"
+
+#: includes/class-bobr-admin.php:816
+msgid "Report a bug or suggest an idea"
+msgstr "Сообщить об ошибке или предложить идею"
+
+#: includes/class-bobr-charts.php:252
+msgid "Everything else"
+msgstr "Остальные"
+
+#: includes/class-bobr-charts.php:285
+msgctxt "millions, short"
+msgid "M"
+msgstr "М"
+
+#: includes/class-bobr-charts.php:288
+msgctxt "thousands, short"
+msgid "k"
+msgstr "к"
+
+#. translators: %s: first day of the week
+#: includes/class-bobr-charts.php:312
+#, php-format
+msgid "week of %s"
+msgstr "неделя с %s"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Jan"
+msgstr "янв"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Feb"
+msgstr "фев"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Mar"
+msgstr "мар"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Apr"
+msgstr "апр"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "May"
+msgstr "мая"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Jun"
+msgstr "июн"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Jul"
+msgstr "июл"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Aug"
+msgstr "авг"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Sep"
+msgstr "сен"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Oct"
+msgstr "окт"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Nov"
+msgstr "ноя"
+
+#: includes/class-bobr-charts.php:358
+msgctxt "month after a day number"
+msgid "Dec"
+msgstr "дек"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Jan"
+msgstr "янв"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Feb"
+msgstr "фев"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Mar"
+msgstr "мар"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Apr"
+msgstr "апр"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "May"
+msgstr "май"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Jun"
+msgstr "июн"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Jul"
+msgstr "июл"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Aug"
+msgstr "авг"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Sep"
+msgstr "сен"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Oct"
+msgstr "окт"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Nov"
+msgstr "ноя"
+
+#: includes/class-bobr-charts.php:360
+msgctxt "month with a year"
+msgid "Dec"
+msgstr "дек"
+
+#: includes/class-bobr-collector.php:205
+msgid "(no referrer)"
+msgstr "(без реферера)"
+
+#: includes/class-bobr-geo.php:80 includes/class-bobr-geo.php:80 includes/class-bobr-geo.php:80 includes/class-bobr-geo.php:80
+msgid "Moscow area"
+msgstr "Пояс Москвы"
+
+#: includes/class-bobr-geo.php:81
+msgid "Kaliningrad"
+msgstr "Калининград"
+
+#: includes/class-bobr-geo.php:81 includes/class-bobr-geo.php:81 includes/class-bobr-geo.php:81 includes/class-bobr-geo.php:81
+msgid "Samara area"
+msgstr "Пояс Самары"
+
+#: includes/class-bobr-geo.php:82
+msgid "Urals"
+msgstr "Урал"
+
+#: includes/class-bobr-geo.php:82
+msgid "Omsk"
+msgstr "Омск"
+
+#: includes/class-bobr-geo.php:82 includes/class-bobr-geo.php:82 includes/class-bobr-geo.php:82
+msgid "Novosibirsk"
+msgstr "Новосибирск"
+
+#: includes/class-bobr-geo.php:83 includes/class-bobr-geo.php:83
+msgid "Krasnoyarsk"
+msgstr "Красноярск"
+
+#: includes/class-bobr-geo.php:83
+msgid "Irkutsk"
+msgstr "Иркутск"
+
+#: includes/class-bobr-geo.php:83 includes/class-bobr-geo.php:83
+msgid "Yakutsk"
+msgstr "Якутск"
+
+#: includes/class-bobr-geo.php:84
+msgid "Vladivostok"
+msgstr "Владивосток"
+
+#: includes/class-bobr-geo.php:84 includes/class-bobr-geo.php:84
+msgid "Magadan"
+msgstr "Магадан"
+
+#: includes/class-bobr-geo.php:84 includes/class-bobr-geo.php:84
+msgid "Kamchatka"
+msgstr "Камчатка"
+
+#: includes/class-bobr-geo.php:88
+msgid "Russia"
+msgstr "Россия"
+
+#. translators: %s: region of Russia guessed from the browser time zone
+#: includes/class-bobr-geo.php:90
+#, php-format
+msgid "%s (by time zone)"
+msgstr "%s (по поясу)"
+
+#: includes/class-bobr-geo.php:95
+msgid "Belarus"
+msgstr "Беларусь"
+
+#: includes/class-bobr-geo.php:95 includes/class-bobr-geo.php:95 includes/class-bobr-geo.php:95
+msgid "Kazakhstan"
+msgstr "Казахстан"
+
+#: includes/class-bobr-geo.php:95
+msgid "Uzbekistan"
+msgstr "Узбекистан"
+
+#: includes/class-bobr-geo.php:96
+msgid "Kyrgyzstan"
+msgstr "Киргизия"
+
+#: includes/class-bobr-geo.php:96
+msgid "Armenia"
+msgstr "Армения"
+
+#: includes/class-bobr-geo.php:96
+msgid "Georgia"
+msgstr "Грузия"
+
+#: includes/class-bobr-geo.php:96
+msgid "Azerbaijan"
+msgstr "Азербайджан"
+
+#: includes/class-bobr-geo.php:96 includes/class-bobr-geo.php:96
+msgid "Ukraine"
+msgstr "Украина"
+
+#: includes/class-bobr-geo.php:97
+msgid "Moldova"
+msgstr "Молдова"
+
+#: includes/class-bobr-geo.php:97
+msgid "Tajikistan"
+msgstr "Таджикистан"
+
+#: includes/class-bobr-geo.php:97
+msgid "Turkmenistan"
+msgstr "Туркменистан"
+
+#: includes/class-bobr-geo.php:97
+msgid "Turkey"
+msgstr "Турция"
+
+#: includes/class-bobr-geo.php:97
+msgid "UAE"
+msgstr "ОАЭ"
+
+#: includes/class-bobr-geo.php:98
+msgid "Germany"
+msgstr "Германия"
+
+#: includes/class-bobr-geo.php:98
+msgid "United Kingdom"
+msgstr "Великобритания"
+
+#: includes/class-bobr-geo.php:98
+msgid "Latvia"
+msgstr "Латвия"
+
+#: includes/class-bobr-geo.php:98
+msgid "Lithuania"
+msgstr "Литва"
+
+#: includes/class-bobr-geo.php:98
+msgid "Estonia"
+msgstr "Эстония"
+
+#: includes/class-bobr-geo.php:99
+msgid "Thailand"
+msgstr "Таиланд"
+
+#: includes/class-bobr-geo.php:99
+msgid "Vietnam"
+msgstr "Вьетнам"
+
+#: includes/class-bobr-geo.php:99
+msgid "Israel"
+msgstr "Израиль"
+
+#: includes/class-bobr-geo.php:99
+msgid "Serbia"
+msgstr "Сербия"
+
+#: includes/class-bobr-geo.php:99
+msgid "Indonesia"
+msgstr "Индонезия"
+
+#. translators: %s: browser time zone, for example America/New_York
+#: includes/class-bobr-geo.php:108
+#, php-format
+msgid "Other (%s)"
+msgstr "Другие (%s)"
+
+#. translators: %s: folder path on the server
+#: includes/class-bobr-geo.php:120
+#, php-format
+msgid "Could not create the folder %s"
+msgstr "Не удалось создать папку %s"
+
+#: includes/class-bobr-geo.php:143
+msgid "Could not unpack the database"
+msgstr "Не удалось распаковать базу"
+
+#. translators: %s: technical error message
+#: includes/class-bobr-geo.php:157
+#, php-format
+msgid "The downloaded file cannot be read: %s"
+msgstr "Скачанный файл не читается: %s"
+
+#: includes/class-bobr-mmdb.php:22
+msgid "mmdb: cannot open the file"
+msgstr "mmdb: файл не открывается"
+
+#: includes/class-bobr-mmdb.php:30
+msgid "mmdb: no metadata"
+msgstr "mmdb: нет метаданных"
+
+#: includes/class-bobr-mmdb.php:114
+msgid "mmdb: unknown record size"
+msgstr "mmdb: неизвестный размер записи"
+
+#: includes/class-bobr-util.php:41
+msgid "YandexAdditional (Alice)"
+msgstr "YandexAdditional (Алиса)"
+
+#: includes/class-bobr-util.php:51
+msgid "Yandex (other)"
+msgstr "Yandex (прочие)"
+
+#: includes/class-bobr-util.php:92
+msgid "SEO tools"
+msgstr "SEO-сервисы"
+
+#: includes/class-bobr-util.php:93
+msgid "Other"
+msgstr "Прочие"
+
+#: includes/class-bobr-util.php:94
+msgid "Unknown"
+msgstr "Неизвестные"
+
+#: includes/class-bobr-util.php:120
+msgid "Empty user agent"
+msgstr "Пустая строка браузера"
+
+#: includes/class-bobr-util.php:129
+msgid "Unknown bot"
+msgstr "Неизвестный"
+
+#: includes/class-bobr-util.php:155
+msgid "Other OS"
+msgstr "Другая"
+
+#: includes/class-bobr-util.php:175
+msgid "Other browser"
+msgstr "Другой"
+
+#: includes/class-bobr-util.php:177
+msgid "Yandex Browser"
+msgstr "Яндекс Браузер"
+
+#. translators: %d: screen width in pixels
+#: includes/class-bobr-util.php:205
+#, php-format
+msgid "up to %d"
+msgstr "до %d"
+
+#. translators: %d: screen width in pixels
+#: includes/class-bobr-util.php:209
+#, php-format
+msgid "over %d"
+msgstr "больше %d"
+
+#: includes/class-bobr-util.php:229 includes/class-bobr-util.php:229 includes/class-bobr-util.php:233
+msgid "Alice"
+msgstr "Алиса"
+
+#: includes/class-bobr-util.php:249
+msgid "no utm_source"
+msgstr "без utm_source"
+
+#: includes/class-bobr-util.php:255
+msgid "Internal navigation"
+msgstr "Внутренние переходы"
+
+#: includes/class-bobr-util.php:258 includes/class-bobr-util.php:258
+msgid "Yandex"
+msgstr "Яндекс"
+
+#: includes/class-bobr-util.php:259
+msgid "Rambler"
+msgstr "Рамблер"
+
+#: includes/class-bobr-util.php:272 includes/class-bobr-util.php:272 includes/class-bobr-util.php:272
+msgid "VK"
+msgstr "ВКонтакте"
+
+#: includes/class-bobr-util.php:272
+msgid "Odnoklassniki"
+msgstr "Одноклассники"
+
+#: includes/class-bobr-util.php:273 includes/class-bobr-util.php:273 includes/class-bobr-util.php:273
+msgid "Telegram"
+msgstr "Телеграм"
+
+#: includes/class-bobr-util.php:273 includes/class-bobr-util.php:274
+msgid "Dzen"
+msgstr "Дзен"
+
+#: includes/class-bobr-util.php:274 includes/class-bobr-util.php:274
+msgid "YouTube"
+msgstr "Ютуб"
+
+#: includes/class-bobr-util.php:274
+msgid "Pinterest"
+msgstr "Пинтерест"
+
+#. translators: Description of the plugin
+#: bobr-analytics.php
+msgid "Self-hosted website statistics without cookies or third-party services: visitors, sources, AI assistants, bots, geography, page speed. Data stays in this site's database."
+msgstr "Своя статистика сайта без куки и без внешних сервисов: посетители, источники, нейросети, роботы, география, скорость. Данные хранятся в базе этого сайта."

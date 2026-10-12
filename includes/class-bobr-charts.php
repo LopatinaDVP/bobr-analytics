@@ -97,7 +97,7 @@ class Bobr_Charts {
 	private static function legend( $series ) {
 		$o = '<div class="bobr-legend">';
 		foreach ( array_values( $series ) as $si => $s ) {
-			$o .= '<span><i style="background:' . self::COLORS[ $si % count( self::COLORS ) ] . ( ! empty( $s[2] ) ? ';opacity:.5' : '' ) . '"></i>' . esc_html( $s[0] ) . '</span>';
+			$o .= '<span><i style="background:' . self::COLORS[ $si % count( self::COLORS ) ] . ( ! empty( $s[2] ) ? '80' : '' ) . '"></i>' . esc_html( $s[0] ) . '</span>';
 		}
 		return $o . '</div>';
 	}
@@ -109,7 +109,7 @@ class Bobr_Charts {
 				$max = max( $max, $v );
 			}
 		}
-		$days = array( 1 => 'Пн', 2 => 'Вт', 3 => 'Ср', 4 => 'Чт', 5 => 'Пт', 6 => 'Сб', 7 => 'Вс' );
+		$days = array_combine( range( 1, 7 ), self::weekdays() );
 		$o    = '<div class="bobr-heat"><table><thead><tr><th></th>';
 		for ( $hh = 0; $hh < 24; $hh++ ) {
 			$o .= '<th>' . $hh . '</th>';
@@ -119,8 +119,8 @@ class Bobr_Charts {
 			$o .= '<tr><th>' . $dn . '</th>';
 			for ( $hh = 0; $hh < 24; $hh++ ) {
 				$v = isset( $grid[ $d ][ $hh ] ) ? (int) $grid[ $d ][ $hh ] : 0;
-				$a = $max ? round( 0.08 + 0.92 * $v / $max, 2 ) : 0;
-				$o .= '<td style="background:rgba(196,138,44,' . ( $v ? $a : 0.04 ) . ')" title="' . esc_attr( $dn . ', ' . $hh . ':00 - ' . $v ) . '">' . ( $v ? (int) $v : '' ) . '</td>';
+				$a = $v && $max ? round( 0.08 + 0.92 * $v / $max, 2 ) : 0.04;
+				$o .= '<td style="background:' . self::COLORS[0] . sprintf( '%02x', round( $a * 255 ) ) . '" title="' . esc_attr( $dn . ', ' . $hh . ':00 - ' . $v ) . '">' . ( $v ? (int) $v : '' ) . '</td>';
 			}
 			$o .= '</tr>';
 		}
@@ -199,12 +199,12 @@ class Bobr_Charts {
 		arsort( $items );
 		$tot = array_sum( $items );
 		if ( ! $tot ) {
-			return '<p class="bobr-empty">Пока нет данных за этот период.</p>';
+			return '<p class="bobr-empty">' . __( 'No data for this period yet.', 'bobr-analytics' ) . '</p>';
 		}
 		if ( count( $items ) > $top + 1 ) {
 			$rest              = array_sum( array_slice( $items, $top, null, true ) );
 			$items             = array_slice( $items, 0, $top, true );
-			$items['Остальные'] = $rest;
+			$items[__( 'Everything else', 'bobr-analytics' )] = $rest;
 		}
 		$o   = '<div class="bobr-donut"><svg viewBox="0 0 42 42" role="img"><circle cx="21" cy="21" r="15.915" fill="none" stroke="#f2f0eb" stroke-width="7"/>';
 		$li  = '';
@@ -236,33 +236,77 @@ class Bobr_Charts {
 
 	public static function short( $v ) {
 		if ( $v >= 1000000 ) {
-			return round( $v / 1000000, 1 ) . 'М';
+			return round( $v / 1000000, 1 ) . _x( 'M', 'millions, short', 'bobr-analytics' );
 		}
 		if ( $v >= 1000 ) {
-			return round( $v / 1000, 1 ) . 'к';
+			return round( $v / 1000, 1 ) . _x( 'k', 'thousands, short', 'bobr-analytics' );
 		}
-		return (string) ( floor( $v ) == $v ? (int) $v : round( $v, 1 ) );
+		return (string) ( floor( (float) $v ) === (float) $v ? (int) $v : round( $v, 1 ) );
 	}
 
 	public static function num( $v ) {
-		return number_format_i18n( (float) $v, floor( $v ) == $v ? 0 : 1 );
+		return number_format_i18n( (float) $v, floor( (float) $v ) === (float) $v ? 0 : 1 );
 	}
 
 	public static function day_label( $d, $full = false ) {
 		$t = strtotime( $d );
-		$m = array( '', 'янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек' );
+		$m = self::months( 'day' );
 		return (int) gmdate( 'j', $t ) . ' ' . $m[ (int) gmdate( 'n', $t ) ] . ( $full ? ' ' . gmdate( 'Y', $t ) : '' );
 	}
 
 	public static function point_label( $d, $full = false ) {
 		if ( 'month' === self::$unit ) {
-			$m = array( '', 'янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек' );
+			$m = self::months( 'month' );
 			$t = strtotime( $d );
 			return $m[ (int) gmdate( 'n', $t ) ] . ' ' . gmdate( 'Y', $t );
 		}
 		if ( 'week' === self::$unit ) {
-			return ( $full ? 'неделя с ' : '' ) . self::day_label( $d, $full );
+			/* translators: %s: first day of the week */
+			return $full ? sprintf( __( 'week of %s', 'bobr-analytics' ), self::day_label( $d, true ) ) : self::day_label( $d );
 		}
 		return self::day_label( $d, $full );
+	}
+
+	public static function allowed() {
+		$box = array( 'class' => true, 'style' => true, 'title' => true );
+		return array(
+			'svg'      => array( 'class' => true, 'viewbox' => true, 'role' => true ),
+			'line'     => array( 'x1' => true, 'x2' => true, 'y1' => true, 'y2' => true, 'class' => true ),
+			'text'     => array( 'x' => true, 'y' => true, 'class' => true ),
+			'polyline' => array( 'points' => true, 'fill' => true, 'stroke' => true, 'stroke-width' => true, 'stroke-linejoin' => true, 'stroke-linecap' => true, 'stroke-dasharray' => true, 'opacity' => true ),
+			'polygon'  => array( 'points' => true, 'fill' => true, 'opacity' => true ),
+			'circle'   => array( 'cx' => true, 'cy' => true, 'r' => true, 'fill' => true, 'stroke' => true, 'stroke-width' => true, 'stroke-dasharray' => true, 'stroke-dashoffset' => true ),
+			'rect'     => array( 'x' => true, 'y' => true, 'width' => true, 'height' => true, 'rx' => true, 'fill' => true, 'opacity' => true ),
+			'title'    => array(),
+			'div'      => $box,
+			'span'     => $box,
+			'i'        => $box,
+			'b'        => array(),
+			'p'        => $box,
+			'ul'       => array(),
+			'li'       => array(),
+			'table'    => array(),
+			'thead'    => array(),
+			'tbody'    => array(),
+			'tr'       => array(),
+			'th'       => array(),
+			'td'       => $box,
+		);
+	}
+
+	public static function weekdays() {
+		global $wp_locale;
+		$out = array();
+		foreach ( array( 1, 2, 3, 4, 5, 6, 0 ) as $i ) {
+			$out[] = $wp_locale->get_weekday_abbrev( $wp_locale->get_weekday( $i ) );
+		}
+		return $out;
+	}
+
+	public static function months( $kind ) {
+		if ( 'day' === $kind ) {
+			return array( '', _x( 'Jan', 'month after a day number', 'bobr-analytics' ), _x( 'Feb', 'month after a day number', 'bobr-analytics' ), _x( 'Mar', 'month after a day number', 'bobr-analytics' ), _x( 'Apr', 'month after a day number', 'bobr-analytics' ), _x( 'May', 'month after a day number', 'bobr-analytics' ), _x( 'Jun', 'month after a day number', 'bobr-analytics' ), _x( 'Jul', 'month after a day number', 'bobr-analytics' ), _x( 'Aug', 'month after a day number', 'bobr-analytics' ), _x( 'Sep', 'month after a day number', 'bobr-analytics' ), _x( 'Oct', 'month after a day number', 'bobr-analytics' ), _x( 'Nov', 'month after a day number', 'bobr-analytics' ), _x( 'Dec', 'month after a day number', 'bobr-analytics' ) );
+		}
+		return array( '', _x( 'Jan', 'month with a year', 'bobr-analytics' ), _x( 'Feb', 'month with a year', 'bobr-analytics' ), _x( 'Mar', 'month with a year', 'bobr-analytics' ), _x( 'Apr', 'month with a year', 'bobr-analytics' ), _x( 'May', 'month with a year', 'bobr-analytics' ), _x( 'Jun', 'month with a year', 'bobr-analytics' ), _x( 'Jul', 'month with a year', 'bobr-analytics' ), _x( 'Aug', 'month with a year', 'bobr-analytics' ), _x( 'Sep', 'month with a year', 'bobr-analytics' ), _x( 'Oct', 'month with a year', 'bobr-analytics' ), _x( 'Nov', 'month with a year', 'bobr-analytics' ), _x( 'Dec', 'month with a year', 'bobr-analytics' ) );
 	}
 }

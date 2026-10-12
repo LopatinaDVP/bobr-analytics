@@ -8,6 +8,10 @@
 
 **[Скачать последнюю версию](../../releases/latest)** · [Сообщить об ошибке или предложить идею](../../issues) · [lop-pa.dev](https://lop-pa.dev)
 
+Интерфейс плагина на русском и английском: язык выбирается сам по языку сайта. Шаблон для переводов на другие языки лежит в `languages/bobr-analytics.pot`.
+
+> **English.** Bobr Analytics is a free, self-hosted analytics plugin for WordPress. No cookies, no third-party services: visits, sources, AI assistant referrals, bots, geography, page speed, calls and form submissions are stored in your own site database. The interface is available in English and Russian.
+
 ## Ролик за 50 секунд
 
 https://github.com/user-attachments/assets/49e219a6-f52a-4cdd-b378-dd9733e8f127
@@ -70,7 +74,7 @@ https://github.com/user-attachments/assets/49e219a6-f52a-4cdd-b378-dd9733e8f127
 
 ## Требования
 
-- WordPress 5.8 или новее.
+- WordPress 6.2 или новее.
 - PHP 7.4 или новее.
 - MySQL или MariaDB, как у любого WordPress.
 - Для базы городов около 130 МБ свободного места на диске сайта. Без базы плагин тоже работает: страна и часовой пояс определяются по браузеру.

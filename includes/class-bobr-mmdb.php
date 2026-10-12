@@ -12,17 +12,17 @@ class Bobr_Mmdb {
 	private $ipv4_start = null;
 
 	public function __construct( $file ) {
-		$this->fh = @fopen( $file, 'rb' );
+		$this->fh = is_readable( $file ) ? fopen( $file, 'rb' ) : false; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- random-access reads of a 130 MB local database, WP_Filesystem cannot seek.
 		if ( ! $this->fh ) {
-			throw new Exception( 'mmdb: файл не открывается' );
+			throw new Exception( esc_html__( 'mmdb: cannot open the file', 'bobr-analytics' ) );
 		}
 		$size  = filesize( $file );
 		$chunk = min( $size, 131072 );
 		fseek( $this->fh, $size - $chunk );
-		$tail = fread( $this->fh, $chunk );
+		$tail = fread( $this->fh, $chunk ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- random-access reads of a local database, WP_Filesystem cannot seek.
 		$pos  = strrpos( $tail, "\xAB\xCD\xEFMaxMind.com" );
 		if ( false === $pos ) {
-			throw new Exception( 'mmdb: нет метаданных' );
+			throw new Exception( esc_html__( 'mmdb: no metadata', 'bobr-analytics' ) );
 		}
 		$meta_start = $size - $chunk + $pos + 14;
 		list( $this->meta ) = $this->decode( $meta_start, $meta_start );
@@ -34,7 +34,7 @@ class Bobr_Mmdb {
 
 	public function __destruct() {
 		if ( $this->fh ) {
-			fclose( $this->fh );
+			fclose( $this->fh ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- closes the stream opened in the constructor.
 		}
 	}
 
@@ -43,10 +43,10 @@ class Bobr_Mmdb {
 	}
 
 	public function get( $ip ) {
-		$bin = @inet_pton( $ip );
-		if ( false === $bin ) {
+		if ( ! filter_var( $ip, FILTER_VALIDATE_IP ) ) {
 			return null;
 		}
+		$bin = inet_pton( $ip );
 		$bits = strlen( $bin ) * 8;
 		$node = 0;
 		if ( 4 === strlen( $bin ) && 6 === (int) $this->meta['ip_version'] ) {
@@ -80,7 +80,7 @@ class Bobr_Mmdb {
 			return '';
 		}
 		fseek( $this->fh, $offset );
-		$s = fread( $this->fh, $len );
+		$s = fread( $this->fh, $len ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- random-access reads of a local database, WP_Filesystem cannot seek.
 		return false === $s ? '' : $s;
 	}
 
@@ -100,7 +100,7 @@ class Bobr_Mmdb {
 			case 32:
 				return unpack( 'N', substr( $b, $bit * 4, 4 ) )[1];
 		}
-		throw new Exception( 'mmdb: неизвестный размер записи' );
+		throw new Exception( esc_html__( 'mmdb: unknown record size', 'bobr-analytics' ) );
 	}
 
 	private function decode( $offset, $base ) {

@@ -22,7 +22,7 @@ w.addEventListener('pagehide',leave);
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
 if(/^tel:/i.test(h))send({t:'ev',k:'tel'});else if(/^mailto:/i.test(h))send({t:'ev',k:'mail'});
 else if(/^https?:/i.test(a.href)&&a.host!=L.host)send({t:'ev',k:'out',n:a.protocol+'//'+a.host+a.pathname})},true);
-function fname(f){return (f.id||f.getAttribute('name')||f.getAttribute('aria-label')||(f.className+'').split(' ')[0]||'форма').slice(0,120)}
+function fname(f){return (f.id||f.getAttribute('name')||f.getAttribute('aria-label')||(f.className+'').split(' ')[0]||'form').slice(0,120)}
 d.addEventListener('input',function(e){var f=e.target.form;if(f)F[fname(f)]=1},true);
 d.addEventListener('submit',function(e){var k=fname(e.target);sent[k]=1;send({t:'ev',k:'fs',n:k})},true);
 })(window,document,navigator);
