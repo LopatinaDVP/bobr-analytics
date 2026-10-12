@@ -1,0 +1,81 @@
+.bobr { --b-acc: #c48a2c; --b-line: #e4e0d8; --b-soft: #faf7f1; --b-ink: #1d2327; --b-mute: #6b7280; max-width: 1500px; }
+.bobr-top { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 6px 0 14px; }
+.bobr-top h1 { font-size: 24px; font-weight: 700; margin: 0; padding: 0; }
+.bobr-logo { font-size: 26px; }
+.bobr-note { color: var(--b-mute); font-size: 13px; }
+.bobr-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 20px; align-items: start; }
+.bobr-nav { position: sticky; top: 46px; display: flex; flex-direction: column; gap: 2px; background: #fff; border: 1px solid var(--b-line); border-radius: 12px; padding: 8px; }
+.bobr-nav a { padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--b-ink); font-weight: 500; }
+.bobr-nav a:hover { background: var(--b-soft); }
+.bobr-nav a.is-on { background: var(--b-acc); color: #fff; }
+.bobr-main { min-width: 0; }
+.bobr-bar { background: #fff; border: 1px solid var(--b-line); border-radius: 12px; padding: 12px 14px; margin-bottom: 16px; display: grid; gap: 10px; }
+.bobr-periods, .bobr-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.bobr-periods > a { padding: 6px 12px; border: 1px solid var(--b-line); border-radius: 20px; text-decoration: none; color: var(--b-ink); }
+.bobr-periods > a.is-on { background: var(--b-ink); color: #fff; border-color: var(--b-ink); }
+.bobr-custom input { width: 140px; }
+.bobr-cmp { margin-left: 6px; color: var(--b-mute); }
+.bobr-filters input[type=search] { width: 190px; }
+.bobr-range { color: var(--b-mute); font-size: 12.5px; }
+.bobr-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.bobr-card { background: #fff; border: 1px solid var(--b-line); border-radius: 12px; padding: 14px 16px; }
+.bobr-card .l { color: var(--b-mute); font-size: 12.5px; }
+.bobr-card .l i { font-style: normal; display: inline-grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: var(--b-line); font-size: 10px; cursor: help; }
+.bobr-card .v { font-size: 26px; font-weight: 700; margin-top: 4px; color: var(--b-ink); }
+.bobr-card .d { display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 600; padding: 1px 7px; border-radius: 10px; background: #eef0f2; color: var(--b-mute); }
+.bobr-card .d.up { background: #e6f5ec; color: #1e7a3c; }
+.bobr-card .d.down { background: #fdecec; color: #b42318; }
+.bobr-box { background: #fff; border: 1px solid var(--b-line); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; min-width: 0; }
+.bobr-box-h { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.bobr-box-h h2 { font-size: 15px; margin: 0; }
+.bobr-tools { display: flex; gap: 6px; }
+.bobr-tools input { width: 170px; }
+.bobr-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 0 16px; }
+.bobr-chart { width: 100%; height: auto; display: block; }
+.bobr-chart .g { stroke: #eee; }
+.bobr-chart .yl { font-size: 11px; fill: #8a8f98; text-anchor: end; }
+.bobr-chart .xl { font-size: 11px; fill: #8a8f98; text-anchor: middle; }
+.bobr-chart .bl { font-size: 11px; fill: #6b7280; text-anchor: middle; }
+.bobr-units { display: inline-flex; gap: 4px; align-items: center; margin-left: 6px; color: var(--b-mute); }
+.bobr-units a { padding: 4px 10px; border-radius: 14px; text-decoration: none; color: var(--b-ink); }
+.bobr-units a.is-on { background: var(--b-soft); box-shadow: inset 0 0 0 1px var(--b-acc); }
+.bobr-donuts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.bobr-donuts h3 { font-size: 13px; margin: 0 0 8px; color: var(--b-mute); font-weight: 600; }
+.bobr-donut { display: flex; align-items: center; gap: 16px; }
+.bobr-donut svg { width: 120px; height: 120px; flex: none; }
+.bobr-donut ul { margin: 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--b-mute); min-width: 0; }
+.bobr-donut li { margin: 3px 0; }
+.bobr-donut li i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.bobr-donut li b { color: var(--b-ink); font-weight: 600; margin-left: 4px; }
+.bobr-legend {display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--b-mute); margin-top: 6px; }
+.bobr-legend i { display: inline-block; width: 12px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.bobr-tw { overflow-x: auto; }
+.bobr-t { width: 100%; border-collapse: collapse; font-size: 13px; }
+.bobr-t th { text-align: left; font-weight: 600; color: var(--b-mute); padding: 8px; border-bottom: 1px solid var(--b-line); cursor: pointer; white-space: nowrap; user-select: none; }
+.bobr-t th[data-dir=desc]::after { content: " ↓"; }
+.bobr-t th[data-dir=asc]::after { content: " ↑"; }
+.bobr-t td { padding: 7px 8px; border-bottom: 1px solid #f2f0eb; word-break: break-word; }
+.bobr-t tr:hover td { background: var(--b-soft); }
+.bobr-t .n { text-align: right; white-space: nowrap; }
+.bobr-t td.n { position: relative; }
+.bobr-t td .bar { position: absolute; right: 0; top: 4px; bottom: 4px; background: rgba(196, 138, 44, .16); border-radius: 3px; }
+.bobr-t td .bar + b { position: relative; font-weight: 600; }
+.bobr-t td.good { color: #1e7a3c; font-weight: 600; }
+.bobr-t td.mid { color: #b7791f; font-weight: 600; }
+.bobr-t td.bad { color: #b42318; font-weight: 600; }
+.bobr-pager { display: flex; align-items: center; gap: 10px; justify-content: flex-end; margin-top: 8px; color: var(--b-mute); font-size: 12.5px; }
+.bobr-empty, .bobr-hint { color: var(--b-mute); font-size: 13px; }
+.bobr-heat { overflow-x: auto; }
+.bobr-heat table { border-collapse: separate; border-spacing: 2px; font-size: 11px; }
+.bobr-heat th { color: var(--b-mute); font-weight: 500; padding: 2px 4px; }
+.bobr-heat td { width: 32px; height: 26px; text-align: center; border-radius: 4px; color: #3b2a0c; }
+.bobr-set h2 { font-size: 16px; margin: 6px 0 10px; }
+.bobr-set h3 { font-size: 14px; margin: 18px 0 6px; }
+.bobr-set textarea { width: 100%; max-width: 520px; }
+.bobr-roles { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.bobr-attr { font-size: 12px; color: var(--b-mute); }
+@media (max-width: 960px) {
+  .bobr-layout { grid-template-columns: 1fr; }
+  .bobr-nav { position: static; flex-direction: row; flex-wrap: wrap; }
+  .bobr-2 { grid-template-columns: 1fr; }
+}
